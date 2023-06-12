@@ -670,35 +670,35 @@
             You can Email us or you can Call us directly.
           </p>
 
-          <form action="" class="contact-form">
+          <form name="submit-to-google-sheet" class="contact-form">
 
-            <div class="input-wrapper">
-              <input type="text" name="name" aria-label="name" placeholder="Your name*" required class="input-field">
+                  <div class="input-wrapper">
+                    <input type="text" name="name" aria-label="name" placeholder="Your name*" required class="input-field">
 
-              <input type="email" name="email_address" aria-label="email" placeholder="Email address*" required
-                class="input-field">
-            </div>
+                    <input type="email" name="email_address" aria-label="email" placeholder="Email address*" required
+                      class="input-field">
+                  </div>
 
-            <div class="input-wrapper">
-              <input type="text" name="subject" aria-label="subject" placeholder="Subject" class="input-field">
+                  <div class="input-wrapper">
+                    <input type="text" name="subject" aria-label="subject" placeholder="Subject" class="input-field">
 
-              <input type="number" name="phone" aria-label="phone" placeholder="Phone number" class="input-field">
-            </div>
+                    <input type="number" name="phone" aria-label="phone" placeholder="Phone number" class="input-field">
+                  </div>
 
-            <textarea name="message" aria-label="message" placeholder="Your message...*" required
-              class="input-field"></textarea>
+                  <textarea name="message" aria-label="message" placeholder="Your message...*" required
+                    class="input-field"></textarea>
 
-            <div class="checkbox-wrapper">
-              <input type="checkbox" name="terms_and_policy" id="terms" required class="checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" name="terms_and_policy" id="terms" required class="checkbox">
 
-              <label for="terms" class="label">
-                Accept <a href="#privacypolicy" class="label-link" target="_blank">Terms of Services</a> and <a href="#termsofservice" target="_blank" class="label-link">Privacy
-                  Policy</a>
-              </label>
-            </div>
+                    <label for="terms" class="label">
+                      Accept <a href="termsofservice.html" target="_blank" class="label-link">Terms and Conditions</a> and <a href="privacypolicy.html" target="_blank" class="label-link">Privacy
+                        Policy</a>
+                    </label>
+                  </div>
 
-            <button type="submit" class="btn btn-primary">Send Message</button>
-
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+                  <span id="success"></span>
           </form>
 
           <ul class="contact-list">
@@ -821,13 +821,13 @@
 
       <div class="box">
           <h3>Quick Links</h3>
-          <a href="#home"><i class="fas fa-chevron-circle-right" ></i> Home</a>
+          <a href="#home"><i class="fas fa-chevron-circle-right"></i> Home</a>
           <a href="#service"><i class="fas fa-chevron-circle-right"></i> Services</a>
           <a href="#project"><i class="fas fa-chevron-circle-right"></i> Projects</a>
           <a href="#about"><i class="fas fa-chevron-circle-right"></i> About</a>
           <a href="#contact"><i class="fas fa-chevron-circle-right"></i> Contact</a>
-          <a href="termsofservice.html" target="_blank"><i class="fas fa-chevron-circle-right" ></i> Terms and Conditions</a>
-          <a href="privacypolicy.html" target="_blank"><i class="fas fa-chevron-circle-right" ></i> Privacy Policy</a>
+          <a href="termsofservice.html" target="_blank"><i class="fas fa-chevron-circle-right"></i> Terms and Conditions</a>
+          <a href="privacypolicy.html" target="_blank"><i class="fas fa-chevron-circle-right"></i> Privacy Policy</a>
       </div>
 
 
@@ -871,6 +871,44 @@
 
 
 
+<!-- java scripts for contact form -->
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxzIFbnZLtFn18JjmXwerp1_c-OfWwaonZljt4mnctKqEmvnJ6rvrYTtZKtxZthsJdR/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const success = document.getElementById('success');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response =>  {
+         success.innerHTML="Data Successfully Submitted";
+
+         setTimeout(function()
+         {
+          success.innerHTML=" ";
+         },3000)
+         form.reset();
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- java scripts for contact form -->
 </body>
 
 </html>
