@@ -727,7 +727,9 @@ h5 {
     flex-direction: column;
     align-items: center;
   }
-
+ .testimonial-box p{
+    margin: 5px;
+  }
   .testimonial-box .testimonial .vid-test{
     height: 250;
    
