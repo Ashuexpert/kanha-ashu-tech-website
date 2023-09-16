@@ -723,6 +723,7 @@ h5 {
     flex-direction: column;
     margin-left: 21px;
     padding: 5px;
+    padding-right:10px;
     /* margin-right: 20px; */
     width: 90%;
     /* margin: 5px; */
